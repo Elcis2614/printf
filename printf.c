@@ -1,9 +1,9 @@
 #include "main.h"
 #include <stdarg.h>
 /**
- * _printf - customized printf function
- * @format: the string
- * Return: the number of characters printed;
+ *_printf - customized printf function
+ *@format: the string
+ *Return: the number of characters printed;
  */
 int _printf(const char *format, ...)
 {
