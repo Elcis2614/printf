@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	n = 0;
 	while (*format != '\0')
 	{
-		if (*format != "%")
+		if (*format != '%')
 		{
 			_putchar(*format);
 			n++;
