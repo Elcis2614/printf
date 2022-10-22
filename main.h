@@ -5,4 +5,5 @@
 #include <unistd.h>
 int _putchar(char);
 int _printf(const char *format, ...);
+void printS(char *t, int *n);
 #endif
