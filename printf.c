@@ -1,9 +1,24 @@
 #include "main.h"
 #include <stdarg.h>
 /**
- *_printf - customized printf function
- *@format: the string
- *Return: the number of characters printed;
+ *printS - prints a string
+ *@s: the string
+ *@n: the number of characters to printed;
+ */
+void printS(char *s, int *n)
+{
+	while (*s)
+	{
+		putchar(*s);
+		*n += 1;
+		*s++;
+	}
+	*n -= 1;
+}
+/**
+ * _printf - customised printf function
+ * @format: the string
+ * Return: the number of characters printed;
  */
 int _printf(const char *format, ...)
 {
@@ -11,49 +26,38 @@ int _printf(const char *format, ...)
 	char *s, c;
 	int n;
 
-	if (format == NULL)
-		exit(0);
-	va_start(arg, format);
 	n = 0;
+	if (format == NULL)
+		return (0);
+	va_start(arg, format);
 	while (*format != '\0')
 	{
-		if (*format != '%')
-		{
-			_putchar(*format);
-			n += 1;
-		}
-		else
-		{
-			c = *format;
-			format++;
-			if (*format == 'c')
-			{
-				_putchar(va_arg(arg, int));
-				n += 1;
-			}
-			else if (*format == 's')
-			{
-				s = va_arg(arg, char *);
-				while (*s)
-				{
-					_putchar(*s);
-					n += 1;
-					s++;
-				}
-			}
-			else if (*format == '%')
-			{
-				putchar(*format);
-				n++;
-			}
-			else
-			{
-				putchar(c);
-				putchar(*format);
-				n += 2;
-			}
-		}
+		c = *format;
 		format++;
+		if ((c == '%') &&
+		(*format == 'c' || *format == 's'  || *format == '\0' || *format == '%'))
+		{
+			switch (*format)
+			{
+				case 'c':
+					putchar(va_arg(arg, int));
+					break;
+				case 's':
+					printS(va_arg(arg, char *), &n);
+					break;
+				case '%':
+					putchar('%');
+					break;
+				case '\0':
+					n--;
+					continue;
+			}
+			format++;
+		}
+		else if (c != '%')
+			_putchar(c);
+		n++;
 	}
+	va_end(arg);
 	return (n);
 }
