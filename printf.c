@@ -11,7 +11,7 @@ void printS(char *s, int *n)
 	{
 		putchar(*s);
 		*n += 1;
-		*s++;
+		s++;
 	}
 	*n -= 1;
 }
@@ -23,7 +23,7 @@ void printS(char *s, int *n)
 int _printf(const char *format, ...)
 {
 	va_list arg;
-	char *s, c;
+	char c;
 	int n;
 
 	n = 0;
