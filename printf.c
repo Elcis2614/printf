@@ -2,11 +2,17 @@
 #include <stdarg.h>
 /**
  *printS - prints a string
- *@s: the string
+ *@t: the string
  *@n: the number of characters to printed;
  */
-void printS(char *s, int *n)
+void printS(char *t, int *n)
 {
+	char *s;
+
+	if (t == NULL)
+		s = "(null)";
+	else
+		s = t;
 	while (*s)
 	{
 		putchar(*s);
@@ -28,7 +34,7 @@ int _printf(const char *format, ...)
 
 	n = 0;
 	if (format == NULL)
-		return (0);
+		exit(0);
 	va_start(arg, format);
 	while (*format != '\0')
 	{
@@ -54,7 +60,7 @@ int _printf(const char *format, ...)
 			}
 			format++;
 		}
-		else if (c != '%')
+		else
 			_putchar(c);
 		n++;
 	}
