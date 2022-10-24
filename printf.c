@@ -15,7 +15,7 @@ void printS(char *t, int *n)
 		s = t;
 	while (*s)
 	{
-		putchar(*s);
+		_putchar(*s);
 		*n += 1;
 		s++;
 	}
@@ -46,13 +46,13 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					putchar(va_arg(arg, int));
+					_putchar(va_arg(arg, int));
 					break;
 				case 's':
 					printS(va_arg(arg, char *), &n);
 					break;
 				case '%':
-					putchar('%');
+					_putchar('%');
 					break;
 				case '\0':
 					n--;
