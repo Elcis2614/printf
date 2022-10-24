@@ -6,4 +6,5 @@
 int _putchar(char);
 int _printf(const char *format, ...);
 void printS(char *t, int *n);
+void printD(int s, int *n);
 #endif

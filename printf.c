@@ -1,6 +1,33 @@
 #include "main.h"
 #include <stdarg.h>
 /**
+ * printD - print an integer
+ * @s: the integer to print
+ * @n: the number of character printed
+ */
+void printD(int s, int *n)
+{
+	int t, d;
+
+	t = d = s;
+	if (t < 0)
+	{
+		putchar('-');
+		d *= -1;
+		t *= -1;
+		*n += 1;
+	}
+	if ((t - (t % 10)) != 0)
+	{
+		t = (t - (t % 10)) / 10;
+		printD(t, n);
+		putchar((d % 10) + '0');
+	}
+	else
+		putchar(d + '0');
+	*n += 1;
+}
+/**
  *printS - prints a string
  *@t: the string
  *@n: the number of characters to printed;
